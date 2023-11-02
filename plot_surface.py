@@ -230,9 +230,11 @@ if __name__ == '__main__':
     #--------------------------------------------------------------------------
     try:
         args.xmin, args.xmax, args.xnum = [float(a) for a in args.x.split(':')]
+        args.xnum = int(args.xnum)
         args.ymin, args.ymax, args.ynum = (None, None, None)
         if args.y:
             args.ymin, args.ymax, args.ynum = [float(a) for a in args.y.split(':')]
+            args.ynum = int(args.ynum)
             assert args.ymin and args.ymax and args.ynum, \
             'You specified some arguments for the y axis, but not all'
     except:
