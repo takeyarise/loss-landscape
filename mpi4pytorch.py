@@ -4,7 +4,10 @@
 """
 
 import numpy as np
-import mpi4py
+try:
+    import mpi4py
+except:
+    print("mpi4py not found.  MPI functionality will not be available.")
 
 def setup_MPI():
     try:
