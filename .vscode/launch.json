@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "linear interpolation",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--cuda", "--dataset", "cifar10", "--model", "resnet18", "--x=0.0:1.0:10", "--dir_type", "states", "--model_file", "cifar10/trained_nets/init_resnet18.pth", "--model_file2", "cifar10/trained_nets/resnet18_ASAM_CosineAnnealingWarmRestarts.pth", "--plot"]
+        },
+        {
+            "name": "1d landscape",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--cuda", "--dataset", "cifar10", "--model", "resnet18", "--x=-1:1:5", "--dir_type", "states", "--model_file", "cifar10/trained_nets/resnet18_ASAM_CosineAnnealingWarmRestarts.pth", "--xnorm", "filter", "--xignore", "biasbn", "--plot"]
+        },
+        {
+            "name": "2d landscape",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--cuda", "--dataset", "cifar10", "--model", "resnet18", "--x=-1:1:3", "--y=-1:1:3", "--dir_type", "states", "--model_file", "cifar10/trained_nets/resnet18_ASAM_CosineAnnealingWarmRestarts.pth", "--xnorm", "filter", "--ynorm", "filter", "--xignore", "biasbn", "--yignore", "biasbs", "--plot"]
+        }
+    ]
+}

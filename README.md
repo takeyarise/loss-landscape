@@ -1,5 +1,13 @@
 # Visualizing the Loss Landscape of Neural Nets
 
+<details>
+<summary>デバッグのための変更点</summary>
+
+* ResNet18 を持っているコードに変更
+* CIFAR10 でなく CIFAR100 を使用するように変更
+  * `--dataset` は `cifar10` のまま
+
+</details>
 
 This repository contains the PyTorch code for the paper
 > Hao Li, Zheng Xu, Gavin Taylor, Christoph Studer and Tom Goldstein. [*Visualizing the Loss Landscape of Neural Nets*](https://arxiv.org/abs/1712.09913). NIPS, 2018.

@@ -24,6 +24,9 @@ import model_loader
 import scheduler
 import mpi4pytorch as mpi
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
 def name_surface_file(args, dir_file):
     # skip if surf_file is specified in args
     if args.surf_file:
@@ -276,14 +279,16 @@ if __name__ == '__main__':
     #--------------------------------------------------------------------------
     # download CIFAR10 if it does not exit
     if rank == 0 and args.dataset == 'cifar10':
-        torchvision.datasets.CIFAR10(root=args.dataset + '/data', train=True, download=True)
+        torchvision.datasets.CIFAR100(root=args.dataset + '/data', train=True, download=True)
 
     mpi.barrier(comm)
 
-    trainloader, testloader = dataloader.load_dataset(args.dataset, args.datapath,
-                                args.batch_size, args.threads, args.raw_data,
-                                args.data_split, args.split_idx,
-                                args.trainloader, args.testloader)
+    trainloader, testloader = dataloader.load_dataset(
+        args.dataset, args.datapath,
+        args.batch_size, args.threads, args.raw_data,
+        args.data_split, args.split_idx,
+        args.trainloader, args.testloader
+    )
 
     #--------------------------------------------------------------------------
     # Start the computation
